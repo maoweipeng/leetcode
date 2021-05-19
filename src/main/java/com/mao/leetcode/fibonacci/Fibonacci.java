@@ -7,6 +7,7 @@ package com.mao.leetcode.fibonacci;
 public class Fibonacci {
     /**
      * 递归方式
+     *
      * @param n
      * @return
      */
@@ -22,6 +23,7 @@ public class Fibonacci {
 
     /**
      * 平推方式
+     *
      * @param n
      * @return
      */
@@ -34,7 +36,7 @@ public class Fibonacci {
 
         int a = 1;
         int b = 1;
-        for(int i = 2; i < n; i++) {
+        for (int i = 2; i < n; i++) {
             int temp = a + b;
             a = b;
             b = temp;
@@ -45,6 +47,7 @@ public class Fibonacci {
 
     /**
      * 尾递归方式
+     *
      * @param n
      * @return
      */
@@ -60,8 +63,24 @@ public class Fibonacci {
         return fibonacci2(n - 1, b, a + b);
     }
 
+    /**
+     * 通项公式
+     * @param n
+     * @return
+     */
+    public static int fibonacci3(int n) {
+        double j5 = Math.sqrt(5);
+
+        double a = Math.pow((1 + j5) / 2, n);
+        double b = Math.pow((1 - j5) / 2, n);
+        return (int) ((1 / j5) * (a - b));
+    }
+
     public static void main(String[] args) {
+        System.out.print(Fibonacci.fibonacci(8));
+        System.out.print(Fibonacci.fibonacci1(8));
         System.out.print(Fibonacci.fibonacci2(8, 1, 1));
+        System.out.print(Fibonacci.fibonacci3(8));
     }
 }
 
